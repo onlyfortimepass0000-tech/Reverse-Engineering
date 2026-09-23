@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alocana Companion</title>
+<meta name="description" content="Alocana Companion App and subscriber dashboard — AI wearable + human assistance for visually impaired people. Navigating Life, Together.">
+<meta name="theme-color" content="#0B1B2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1B2E'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2322D3C5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-plan="free">
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Alocana home">
+      <span class="logo-word">Al<span class="logo-o">o<i></i></span>cana</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#app">Companion App</a>
+      <a href="#dashboard">Subscriber Dashboard</a>
+      <a href="#plans">Plans</a>
+    </nav>
+    <div class="plan-switch" role="radiogroup" aria-label="Preview plan">
+      <button type="button" role="radio" data-set-plan="free" aria-checked="true">Free</button>
+      <button type="button" role="radio" data-set-plan="plus" aria-checked="false">Alocana Plus</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <p class="eyebrow">Alocana AI Systems · Assistive Technology</p>
+    <h1>Navigating Life, <span>Together</span></h1>
+    <p class="lede">An AI wearable that spots hazards in real time, a live human assistant in under 15 seconds, and a companion app that keeps caregivers in the loop. One subscription, full ecosystem.</p>
+    <div class="hero-cta">
+      <a class="btn btn-teal" href="#app">See the Companion App</a>
+      <button class="btn btn-ghost" type="button" data-set-plan="plus">Preview as a subscriber →</button>
+    </div>
+    <ul class="pillars">
+      <li><b>01</b><strong>AI Wearable</strong><span>Smart cane or glasses detecting obstacles &amp; hazards in real time.</span></li>
+      <li><b>02</b><strong>Human Backup</strong><span>Instant live-video assistant for anything AI can't safely resolve.</span></li>
+      <li><b>03</b><strong>Companion App</strong><span>Caregiver GPS tracking and one-tap SOS alerts.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- COMPANION APP -->
+<section class="sec" id="app">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <p class="eyebrow dark">Companion App</p>
+      <h2>Everything a caregiver needs, in one glance.</h2>
+      <p class="muted">Tap the tabs inside the phone. Switch the plan to see what changes the moment a family subscribes.</p>
+
+      <div class="plan-card">
+        <div class="plan-card-head">
+          <span class="plan-pill" data-show="free">Free plan</span>
+          <span class="plan-pill plus" data-show="plus">Alocana Plus · Active</span>
+          <div class="plan-switch big" role="radiogroup" aria-label="Preview plan">
+            <button type="button" role="radio" data-set-plan="free" aria-checked="true">Free</button>
+            <button type="button" role="radio" data-set-plan="plus" aria-checked="false">Subscribed</button>
+          </div>
+        </div>
+        <ul class="diff-list">
+          <li><span class="ok">✓</span> Live GPS location &amp; one-tap SOS</li>
+          <li><span class="ok">✓</span> Device battery &amp; connection status</li>
+          <li><span data-show="free" class="lock">🔒</span><span data-show="plus" class="ok">✓</span> Human assistance <em data-show="free">— pay per call</em><em data-show="plus">— unlimited, &lt;15 sec</em></li>
+          <li><span data-show="free" class="lock">🔒</span><span data-show="plus" class="ok">✓</span> AI hazard reports &amp; weekly insights</li>
+          <li><span data-show="free" class="lock">🔒</span><span data-show="plus" class="ok">✓</span> Safe zones &amp; route deviation alerts</li>
+          <li><span data-show="free" class="lock">🔒</span><span data-show="plus" class="ok">✓</span> Full activity history &amp; caregiver web dashboard</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone-stage">
+      <div class="phone" aria-label="Alocana Companion App preview">
+        <div class="phone-screen">
+          <div class="status-bar"><span>9:41</span><span class="island"></span><span class="sb-icons">▂▄▆ ᯤ ▭</span></div>
+
+          <div class="app-head">
+            <div>
+              <div class="app-logo">Al<span class="logo-o">o<i></i></span>cana</div>
+              <div class="app-tag">Navigating Life, Together</div>
+            </div>
+            <div class="app-head-r">
+              <span class="tier" data-show="free">FREE</span>
+              <span class="tier plus" data-show="plus">PLUS</span>
+              <span class="bell" aria-hidden="true">🔔<i></i></span>
+            </div>
+          </div>
+
+          <div class="app-body">
+            <!-- HOME -->
+            <div class="tab-view" data-view="home">
+              <div class="card track">
+                <div class="avatar">RM</div>
+                <div><strong>Tracking Dad</strong><span class="live"><i></i>Active Now</span></div>
+                <span class="chev">›</span>
+              </div>
+
+              <div class="map" aria-label="Live location map">
+                <div class="map-chip"><i></i><div><b>Live Location</b><small>Updated 1 min ago</small></div></div>
+                <svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <rect width="300" height="170" fill="#0E2236"/>
+                  <path d="M190 0 Q230 20 225 55 Q215 80 180 70 Q150 60 160 25 Q165 5 190 0Z" fill="#12375A"/>
+                  <g stroke="#1B3550" stroke-width="6" fill="none">
+                    <path d="M0 95 H300"/><path d="M0 40 Q120 60 300 35"/><path d="M70 0 V170"/><path d="M250 0 Q240 90 270 170"/><path d="M0 140 Q150 120 300 150"/>
+                  </g>
+                  <g stroke="#15293F" stroke-width="2" fill="none">
+                    <path d="M0 20 H300"/><path d="M0 65 H300"/><path d="M0 120 H300"/><path d="M30 0 V170"/><path d="M120 0 V170"/><path d="M160 0 V170"/><path d="M210 0 V170"/>
+                  </g>
+                  <text x="198" y="38" fill="#6E8CAB" font-size="8" text-anchor="middle">Powai Lake</text>
+                  <text x="20" y="80" fill="#6E8CAB" font-size="8">Andheri (W)</text>
+                  <text x="112" y="85" fill="#6E8CAB" font-size="7">JVLR</text>
+                  <text x="236" y="110" fill="#6E8CAB" font-size="7" text-anchor="middle">Hiranandani</text>
+                  <polyline class="route" points="48,128 82,124 92,112 116,118 128,106 158,106 176,86" fill="none" stroke="#22D3C5" stroke-width="2"/>
+                  <g fill="#22D3C5"><circle cx="82" cy="124" r="2.5"/><circle cx="92" cy="112" r="2.5"/><circle cx="116" cy="118" r="2.5"/><circle cx="158" cy="106" r="2.5"/></g>
+                  <circle cx="48" cy="128" r="8" fill="#0B1B2E" stroke="#22D3C5" stroke-width="1.5"/>
+                  <text x="48" y="131" fill="#E6F1FA" font-size="8" text-anchor="middle">⌂</text>
+                  <circle class="pulse" cx="176" cy="86" r="10" fill="#22D3C5" opacity=".25"/>
+                  <circle cx="176" cy="86" r="5" fill="#22D3C5" stroke="#E6FFFB" stroke-width="2"/>
+                  <!-- safe zone (plus) -->
+                  <circle class="zone" cx="48" cy="128" r="26" fill="none" stroke="#E8B86A" stroke-dasharray="3 3" stroke-width="1.2"/>
+                </svg>
+              </div>
+
+              <div class="mini-stats">
+                <div class="mini"><span class="ico">🔋</span><small>Device Battery</small><b>82%</b><em>~1.5 days left</em></div>
+                <div class="mini"><span class="ico">⏱</span><small>Last Alert</small><b>2 hrs ago</b><em>No active alerts</em></div>
+                <div class="mini assist">
+                  <span class="ico">🎧</span><small>Assistant</small>
+                  <b data-show="plus" class="teal">Connected</b><em data-show="plus">Unlimited</em>
+                  <b data-show="free">Pay-Go</b><em data-show="free">₹49 / call</em>
+                </div>
+              </div>
+
+              <div class="card activity">
+                <div class="card-h"><strong>Recent Activity</strong><span class="muted-s">View All ›</span></div>
+                <ol class="timeline">
+                  <li><span class="dot">⌂</span><time>9:42 AM</time><div><b>Arrived at Home</b><small>Andheri (W), Mumbai</small></div></li>
+                  <li><span class="dot">⚑</span><time>9:10 AM</time><div><b>Human assistance call completed</b><small>Duration: 32 sec · answered in 9 sec</small></div></li>
+                  <li class="gated"><span class="dot">⚠</span><time>8:51 AM</time><div><b>Hazard avoided — open drain</b><small>AI detected at 2.1 m · haptic alert</small></div></li>
+                  <li><span class="dot">⌖</span><time>8:28 AM</time><div><b>Reached Work</b><small>Powai, Mumbai</small></div></li>
+                </ol>
+                <div class="upsell" data-show="free">🔒 Hazard events &amp; full history are part of <b>Alocana Plus</b></div>
+              </div>
+
+              <div class="actions">
+                <button class="btn-gold" type="button">📞 Call Dad</button>
+                <button class="btn-line" type="button" data-show="plus">🕘 View Full History</button>
+                <button class="btn-line sos" type="button" data-show="free">🆘 SOS Test</button>
+              </div>
+            </div>
+
+            <!-- ALERTS -->
+            <div class="tab-view" data-view="alerts" hidden>
+              <h3 class="view-t">Alerts</h3>
+              <div class="alert a-crit"><span class="badge">SOS</span><div><b>SOS pressed — resolved</b><small>Yesterday 6:12 PM · Caregiver called back in 40 s</small></div></div>
+              <div class="alert a-warn gated"><span class="badge">Hazard</span><div><b>Construction barrier on route</b><small>Today 8:51 AM · Hiranandani Gardens</small></div></div>
+              <div class="alert a-warn gated"><span class="badge">Route</span><div><b>Left safe zone “Home”</b><small>Today 8:05 AM · expected (work commute)</small></div></div>
+              <div class="alert a-good"><span class="badge">Device</span><div><b>Smart Cane charged to 100%</b><small>Today 7:30 AM</small></div></div>
+              <div class="alert a-warn"><span class="badge">Battery</span><div><b>Glasses battery below 20%</b><small>Mon 9:14 PM</small></div></div>
+              <div class="upsell" data-show="free">🔒 Hazard &amp; route alerts unlock with <b>Alocana Plus</b></div>
+            </div>
+
+            <!-- REPORTS -->
+            <div class="tab-view" data-view="reports" hidden>
+              <h3 class="view-t">Weekly Report</h3>
+              <div class="gate-wrap">
+                <div class="gate-content">
+                  <div class="rep-grid">
+                    <div class="rep"><small>Hazards avoided</small><b>37</b><em class="up">▲ 12% vs last wk</em></div>
+                    <div class="rep"><small>Avg. assist pickup</small><b>11 s</b><em class="up">Target &lt;15 s</em></div>
+                    <div class="rep"><small>Distance walked</small><b>18.4 km</b><em>6 trips</em></div>
+                    <div class="rep"><small>Independent trips</small><b>83%</b><em>no assist needed</em></div>
+                  </div>
+                  <div class="card">
+                    <div class="card-h"><strong>Hazards by type</strong></div>
+                    <ul class="hbars">
+                      <li><span>Vehicles</span><i style="--w:92%"></i><b>14</b></li>
+                      <li><span>Potholes / drains</span><i style="--w:64%"></i><b>10</b></li>
+                      <li><span>Steps &amp; kerbs</span><i style="--w:48%"></i><b>7</b></li>
+                      <li><span>Low obstacles</span><i style="--w:36%"></i><b>6</b></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="gate" data-show="free">
+                  <span>🔒</span>
+                  <b>Reports are a Plus feature</b>
+                  <small>See hazards avoided, walking patterns and assistance stats every week.</small>
+                  <button type="button" class="btn-gold" data-set-plan="plus">Subscribe to unlock</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SETTINGS -->
+            <div class="tab-view" data-view="settings" hidden>
+              <h3 class="view-t">Settings</h3>
+              <div class="card set">
+                <div class="set-row"><span>Plan</span><b data-show="free">Free · Pay-Go assistance</b><b data-show="plus" class="teal">Alocana Plus · renews 1 Oct</b></div>
+                <div class="set-row"><span>Devices</span><b>Smart Cane · Glasses</b></div>
+                <div class="set-row"><span>Emergency contacts</span><b>2 people</b></div>
+                <div class="set-row"><span>Alert style</span><b>Audio + Haptic</b></div>
+                <div class="set-row gated"><span>Safe zones</span><b>Home · Work · Temple</b></div>
+                <div class="set-row gated"><span>Preferred assistant language</span><b>Hindi, English</b></div>
+                <div class="set-row"><span>Data privacy (DPDP)</span><b>Video not stored</b></div>
+              </div>
+              <button class="btn-gold wide" type="button" data-show="free" data-set-plan="plus">Upgrade to Alocana Plus</button>
+            </div>
+          </div>
+
+          <nav class="tabbar" aria-label="App tabs">
+            <button type="button" data-tab="home" class="on"><span>⌂</span>Home</button>
+            <button type="button" data-tab="alerts"><span>🔔</span>Alerts</button>
+            <button type="button" data-tab="reports"><span>▮▮</span>Reports</button>
+            <button type="button" data-tab="settings"><span>⚙</span>Settings</button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIBER DASHBOARD -->
+<section class="sec dash-sec" id="dashboard">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Caregiver Web Dashboard · Alocana Plus</p>
+        <h2>What a subscriber sees.</h2>
+        <p class="muted-l">The full view for families and caregivers — live location, device health, every hazard the AI caught and every human-assist call.</p>
+      </div>
+      <span class="plan-pill plus" data-show="plus">Subscribed view</span>
+    </div>
+
+    <div class="dash-frame">
+      <div class="dash">
+        <aside class="dash-side">
+          <div class="app-logo">Al<span class="logo-o">o<i></i></span>cana</div>
+          <ul>
+            <li class="on">▦ Overview</li><li>⌖ Live Map</li><li>⚠ Hazards</li><li>🎧 Assist Calls</li><li>⌂ Safe Zones</li><li>🔋 Devices</li><li>⚙ Settings</li>
+          </ul>
+          <div class="side-plan"><small>Plan</small><b>Alocana Plus</b><em>Unlimited human assistance</em></div>
+        </aside>
+
+        <div class="dash-main">
+          <div class="dash-top">
+            <div class="who"><div class="avatar">RM</div><div><b>Ramesh Mehta</b><small><span class="live"><i></i>Active now</span> · Powai, Mumbai</small></div></div>
+            <div class="range" role="group" aria-label="Date range">
+              <button type="button">Today</button><button type="button" class="on">7 days</button><button type="button">30 days</button>
+            </div>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi"><small>Hazards avoided</small><b>37</b><em class="up">▲ 12% vs last week</em></div>
+            <div class="kpi"><small>Avg. assist pickup</small><b>11<span>s</span></b><em class="up">Target &lt; 15 s</em></div>
+            <div class="kpi"><small>Distance walked</small><b>18.4<span>km</span></b><em>across 21 trips</em></div>
+            <div class="kpi"><small>Detection accuracy</small><b>95.2<span>%</span></b><em>AI hazard engine</em></div>
+          </div>
+
+          <div class="grid2">
+            <div class="panel">
+              <div class="panel-h"><div><b>Hazards detected per day</b><small>Last 7 days · all devices</small></div><button class="tbl-toggle" type="button" data-table="t-haz">Table</button></div>
+              <div class="chart" id="c-haz" role="img" aria-label="Bar chart of hazards detected per day"></div>
+              <table class="data-tbl" id="t-haz" hidden><thead><tr><th>Day</th><th>Hazards</th></tr></thead><tbody></tbody></table>
+            </div>
+            <div class="panel">
+              <div class="panel-h"><div><b>Human-assist pickup time</b><small>Seconds to answer · target line at 15 s</small></div><button class="tbl-toggle" type="button" data-table="t-resp">Table</button></div>
+              <div class="chart" id="c-resp" role="img" aria-label="Line chart of assistance pickup time per day"></div>
+              <table class="data-tbl" id="t-resp" hidden><thead><tr><th>Day</th><th>Seconds</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+
+          <div class="grid3">
+            <div class="panel">
+              <div class="panel-h"><div><b>Devices</b><small>Health &amp; connectivity</small></div></div>
+              <div class="dev"><span class="dev-i">🦯</span><div><b>Smart Cane</b><small>Ultrasonic + camera · fw 2.4.1</small></div><div class="bat"><i style="--b:82%"></i></div><b class="num">82%</b></div>
+              <div class="dev"><span class="dev-i">👓</span><div><b>AI Glasses</b><small>Bone-conduction audio · fw 1.9.0</small></div><div class="bat low"><i style="--b:18%"></i></div><b class="num">18%</b></div>
+              <p class="status s-warn"><span>▲</span> Glasses battery low — charge tonight</p>
+            </div>
+            <div class="panel">
+              <div class="panel-h"><div><b>Hazards by type</b><small>Last 7 days</small></div></div>
+              <ul class="hbars light">
+                <li><span>Vehicles</span><i style="--w:92%"></i><b>14</b></li>
+                <li><span>Potholes / drains</span><i style="--w:64%"></i><b>10</b></li>
+                <li><span>Steps &amp; kerbs</span><i style="--w:48%"></i><b>7</b></li>
+                <li><span>Low obstacles</span><i style="--w:36%"></i><b>6</b></li>
+              </ul>
+            </div>
+            <div class="panel">
+              <div class="panel-h"><div><b>Safe zones</b><small>Geofence alerts</small></div></div>
+              <ul class="zones">
+                <li><span class="zdot in"></span><b>Home</b><small>Andheri (W) · 250 m</small><em>Inside</em></li>
+                <li><span class="zdot"></span><b>Work</b><small>Powai · 150 m</small><em>Left 9:30</em></li>
+                <li><span class="zdot"></span><b>Temple</b><small>Chandivali · 100 m</small><em>—</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-h"><div><b>Assistance &amp; alert log</b><small>Every AI hazard and human-assist call</small></div></div>
+            <div class="tbl-scroll">
+              <table class="log">
+                <thead><tr><th>Time</th><th>Event</th><th>Where</th><th>Handled by</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Today 9:10</td><td>Live-video assist: reading a bus number</td><td>JVLR stop</td><td>Agent Priya · 9 s pickup</td><td><span class="st good">✓ Resolved</span></td></tr>
+                  <tr><td>Today 8:51</td><td>Hazard: open drain at 2.1 m</td><td>Hiranandani</td><td>AI · haptic</td><td><span class="st good">✓ Avoided</span></td></tr>
+                  <tr><td>Today 8:40</td><td>Hazard: two-wheeler approaching</td><td>Powai Rd</td><td>AI · audio</td><td><span class="st good">✓ Avoided</span></td></tr>
+                  <tr><td>Yest 18:12</td><td>SOS pressed</td><td>Andheri (W)</td><td>Caregiver + Agent</td><td><span class="st crit">● SOS · closed</span></td></tr>
+                  <tr><td>Yest 17:55</td><td>Live-video assist: crossing guidance</td><td>Saki Naka</td><td>Agent Imran · 13 s pickup</td><td><span class="st good">✓ Resolved</span></td></tr>
+                  <tr><td>Mon 21:14</td><td>Glasses battery below 20%</td><td>Home</td><td>System</td><td><span class="st warn">▲ Watch</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-lock" data-show="free">
+        <div class="lock-card">
+          <span class="lock-ico">🔒</span>
+          <h3>Unlock the caregiver dashboard</h3>
+          <p>Free users get live GPS and SOS in the app. Alocana Plus adds this full web dashboard, unlimited human assistance, hazard reports and safe zones.</p>
+          <button type="button" class="btn btn-teal" data-set-plan="plus">Preview as a subscriber</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="sec" id="plans">
+  <div class="wrap">
+    <p class="eyebrow dark">Plans</p>
+    <h2>One subscription, full ecosystem.</h2>
+    <p class="muted">Illustrative pilot pricing — penetration pricing for early adopters.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free + Pay-Go</h3>
+        <p class="price">₹0<span>/month</span></p>
+        <p class="plan-sub">Human assistance at ₹49 per call</p>
+        <ul><li>Companion app</li><li>Live GPS &amp; one-tap SOS</li><li>Device battery status</li><li>Pay-as-you-go live video help</li></ul>
+        <button type="button" class="btn btn-outline" data-set-plan="free">Preview Free</button>
+      </div>
+      <div class="plan featured">
+        <span class="tag">Navigation-as-a-Service</span>
+        <h3>Alocana Plus</h3>
+        <p class="price">₹999<span>/month</span></p>
+        <p class="plan-sub">Hardware + AI + unlimited human calls</p>
+        <ul><li>Smart cane or AI glasses included</li><li>Unlimited human assistance, &lt;15 s</li><li>AI hazard reports &amp; weekly insights</li><li>Safe zones &amp; route alerts</li><li>Caregiver web dashboard</li></ul>
+        <button type="button" class="btn btn-teal" data-set-plan="plus">Preview Plus</button>
+      </div>
+      <div class="plan">
+        <h3>Institutions</h3>
+        <p class="price">Custom</p>
+        <p class="plan-sub">O&amp;M institutes, hospitals, transit authorities</p>
+        <ul><li>Fleet device management</li><li>Trainee progress dashboards</li><li>Bulk licensing &amp; CSR-linked pricing</li><li>Anonymized accessibility data</li></ul>
+        <a class="btn btn-outline" href="#top">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><div class="logo-word light">Al<span class="logo-o">o<i></i></span>cana</div><small>Alocana AI Systems Pvt Ltd · Navigating Life, Together</small></div>
+    <small>Static concept prototype. All people, locations and numbers are sample data.</small>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
