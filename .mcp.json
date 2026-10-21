@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "rea": {
+      "command": "npx",
+      "args": ["-y", "rea-agents@6.7.0", "mcp"],
+      "env": {
+        "GHIDRA_INSTALL_DIR": "/opt/rea-tools/ghidra_12.1.4_PUBLIC",
+        "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk-amd64",
+        "REA_KUNA_COMMAND": "/opt/rea-tools/kuna/kuna-v1.833-linux-x86_64/kuna",
+        "REA_JADX_MCP_JAR": "/opt/rea-tools/android/jadx-headless-mcp-0.7.1-all.jar",
+        "REA_APKTOOL_COMMAND": "java -jar /opt/rea-tools/android/apktool_3.0.3.jar",
+        "REA_ADB_PATH": "/usr/bin/adb",
+        "REA_RIZIN_COMMAND": "/usr/local/bin/rizin",
+        "REA_OBJDUMP_COMMAND": "/usr/bin/objdump",
+        "REA_GDB_COMMAND": "/usr/bin/gdb",
+        "REA_PWNTOOLS_PYTHON": "/opt/rea-tools/pwntools-venv/bin/python",
+        "REA_PWNDBG_GDB": "/usr/bin/gdb",
+        "REA_PWNDBG_GDBINIT": "/opt/rea-tools/pwndbg/gdbinit.py",
+        "REA_PWNDBG_VENV_PATH": "/opt/rea-tools/pwndbg/.venv",
+        "REA_BINWALK_COMMAND": "/root/.cargo/bin/binwalk",
+        "REA_UNBLOB_COMMAND": "/usr/local/bin/unblob",
+        "REA_WABT_BIN_DIRECTORY": "/opt/rea-tools/wabt/bin",
+        "REA_WAKARU_COMMAND": "/usr/local/bin/wakaru",
+        "REA_ILSPY_CMD_PATH": "/root/.dotnet/tools/ilspycmd",
+        "REA_BROWSER_EXECUTABLE": "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+        "REA_BROWSER_NO_SANDBOX": "1",
+        "REA_TSHARK_COMMAND": "/usr/bin/tshark",
+        "REA_MITMDUMP_COMMAND": "/usr/local/bin/mitmdump",
+        "DOTNET_ROLL_FORWARD": "Major"
+      }
+    }
+  }
+}
