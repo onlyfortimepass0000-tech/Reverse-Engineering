@@ -79,11 +79,9 @@ if [ ! -f "$JADX_JAR" ]; then
   mkdir -p "$TOOLS_DIR/android"
   cd "$DOWNLOADS_DIR"
   curl -fsSL -o "jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar" \
-    "https://github.com/nicknisi/nicknisi.github.io/releases" 2>/dev/null || true
-  # JADX MCP jar must be placed manually or fetched from the correct source
-  # For now, copy if it was downloaded during initial setup
-  [ -f "$DOWNLOADS_DIR/jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar" ] && \
-    cp "$DOWNLOADS_DIR/jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar" "$JADX_JAR"
+    "https://github.com/1013503897/jadx-headless-mcp/releases/download/v${JADX_MCP_VERSION}/jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar"
+  echo "$JADX_MCP_SHA256  jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar" | sha256sum -c -
+  cp "jadx-headless-mcp-${JADX_MCP_VERSION}-all.jar" "$JADX_JAR"
 else
   log "JADX MCP ${JADX_MCP_VERSION} already installed."
 fi
