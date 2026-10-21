@@ -1,4 +1,4 @@
-# Alochana
+# Reverse Engineering
 
 Reverse engineering workspace powered by [REA (Reverse Engineer Anything)](https://github.com/morluto/rea) v6.7.0.
 
