@@ -1,0 +1,14 @@
+{
+  "brand": "Iron Den Thane",
+  "accent": "#FF5A36",
+  "background": "#111111",
+  "hook": ["Still skipping", "leg day?", "We fixed that."],
+  "chartTitle": "Members joined",
+  "chart": [
+    {"label": "Jun", "value": 40},
+    {"label": "Jul", "value": 65},
+    {"label": "Aug", "value": 88},
+    {"label": "Sep", "value": 132}
+  ],
+  "cta": "Claim a free trial"
+}
