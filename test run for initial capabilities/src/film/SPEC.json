@@ -1,0 +1,720 @@
+{
+ "concept": "SCORES (award / clarity / concept / feasibility / picture-sound = average). title-auteur: 9 / 9 / 9.5 / 7.5 / 9 = 8.8, chosen as the SPINE. generative-cinematic: 8 / 8 / 8 / 5.5 / 8 = 7.5 (software-WebGL point-sprite bokeh and line shaders are the slowest and most fragile route; it uses two accents; the frame-tunnel climax is strong but generic). rhythm-editor: 8.5 / 7.5 / 8.5 / 6 / 9.5 = 8.0 (best edit grid and sound lock; the CSS-3D blurred code city and the 33x dive risk soft text and broken preserve-3d; 'Hello, World.' is the weaker title).\n\nFIRST LIGHT is a creation story told as a running program. A variable is declared with no value (`let light;` returns undefined). The film then spends 28 seconds building a universe so that it can assign that variable its first value. Saul Bass reduction meets Prologue-style typographic architecture: one line, one grid, one corridor, one sphere, one sun. A single accent, vermilion #FF3D1F, is the value the variable is waiting for. It is always the same object in a new form: cursor, point, sun, and finally the full stop of the title.\n\nMatch-cut spines:\n- cursor > line > horizon > hairline\n- cursor > point > sun > full stop\n\nEnergy curve:\n- HOOK (0-119): a vermilion monolith pulses like a heartbeat, the macro pull-out reveals that it is a cursor, it types `let light;` and gets `undefined` back.\n- BUILD (120-524): the line becomes a Swiss grid, the grid lies down as an infinite floor, the camera speed-ramps through a corridor of serif brackets, then code particles compile from chaos into a sphere.\n- HELD BREATH (525-599): the world collapses to one vermilion point, `light = ` types itself, and the sound drops to silence.\n- CLIMAX (600-704): ignition. The letterbox breaks open and a Bass sun rises with a reflection made of lines.\n- RESOLVE (705-839): the sun becomes the title's full stop, the letters rise from behind the horizon, and the card holds for 2.5 s.\n\nGRAFTS:\n- From rhythm-editor:\n  - a global 120 BPM grid (1 beat = 15 frames, 1 bar = 60) that every cut and hit lands on: 15, 30, 45, 120, 225, 375, 465-510, 525, 600 (bar 10), 705, 750, 819\n  - the macro monolith-cursor opening on a crisp SVG-viewBox camera\n  - heartbeat blinks\n  - the cursor-blink bookend on the final full stop\n- From generative-cinematic:\n  - velocity-length speed streaks, which replace floor lines that would strobe\n  - depth-cued particle sizing\n  - a single specular 'first light' sweep across the title\n  - shared-component discipline\n\nCUTS:\n- per-frame-seed heat haze (it boils)\n- the 0.5px shockwave stroke and the 24 SVG ray strokes, replaced by a soft ring and soft conic wedges\n- the fade-to-black ending, replaced by a held card\n- the 8-word end card, replaced by 7 words\n- software WebGL, replaced by Canvas 2D everywhere\n\nShared modules every engineer imports:\n- src/film/motion.ts, existing (ease, tween, keys, rng)\n- src/film/fonts.ts, existing\n- src/film/fx.tsx, existing\n- NEW src/film/film.ts, owned by the director. Contents:\n  - PALETTE\n  - EXPO_OUT = ease.expoOut, EXPO_IN = ease.expoIn, IN_OUT = Easing.bezier(0.65,0,0.35,1), SNAP = Easing.bezier(0.7,0,0.2,1), SINE_IN_OUT = Easing.bezier(0.37,0,0.63,1)\n  - FOCAL = 1100, CENTER = (960,540)\n  - project(X,Y,Zw,camZ,camX,roll) and drawFloor(ctx,...), with near-plane clipping at depth >= 60\n  - camZ_s2(f) and camZ_s3(f)\n  - camS1(f) and worldToScreen()\n  - S5_DOT = {x:1114, y:540, d:14}\n  - TITLE_LAYOUT()\n- NEW src/film/sphere.ts: the particle arrays and a pure sphereState(globalFrame), used by both s4 and s5.\n\nNever use linear motion, except for the deliberately mechanical events: keystrokes, the cursor blink and the floor-dash wrap.",
+ "filmTitle": "First Light",
+ "logline": "A blinking cursor declares a variable with nothing in it, and a program builds a universe from a single line so it can give that variable its first value: light.",
+ "palette": [
+  {
+   "hex": "#07070A",
+   "role": "Ink: the base void and background of every scene. Never pure #000 except the letterbox bars."
+  },
+  {
+   "hex": "#000000",
+   "role": "Letterbox bars only."
+  },
+  {
+   "hex": "#3A3A42",
+   "role": "Graphite: grid and floor lines, dim structure."
+  },
+  {
+   "hex": "#8A8A93",
+   "role": "Ash: secondary type. Keywords and punctuation (`let`, `=`, `;`), console output, counter, origin label, credit line."
+  },
+  {
+   "hex": "#EFEAE0",
+   "role": "Bone: primary type, the first line, brackets, particles, speed dashes, rays, horizon, hairline, title. Warm off-white; flat #FFFFFF is never used."
+  },
+  {
+   "hex": "#FF3D1F",
+   "role": "Vermilion, the single accent and the value of `light`. Used only for: cursor (s1), first-line flash (s2 start), sphere core and collapsed point (s4/s5), sun and reflection (s6), title full stop (s7). Nothing else is ever this colour."
+  },
+  {
+   "hex": "#FF8A3D",
+   "role": "Ember: only as emitted light (ignition flash, bloom tint, light leaks). Never a flat shape or type."
+  },
+  {
+   "hex": "#FFF4E8",
+   "role": "Hot core: the ignition disc centre at 600-640, and the warm highlight band of the single specular sweep across the title at 776-806."
+  }
+ ],
+ "typography": "Three voices, each with one job.\n\n(1) JetBrains Mono is the voice of the program. Its advance is exactly 0.6em, checked against the font file: 38.4px at 64px, 19.2px at 32px.\n- Code lines: weight 400, 64px. Keywords and punctuation (`let`, `=`, `;`, space) are Ash #8A8A93; identifiers ('light') are Bone #EFEAE0.\n- Console output: weight 400, 32px, Ash. U+2190 '\u2190' is present in the font.\n- Readouts (`(0, 0)`, counter): weight 400, 18-20px, tabular figures, Ash.\n- Credit: weight 300, 19px, uppercase, letter-spacing 0.28em, Ash.\n- The s1 and s5 code lines share one 64px cell grid so they rhyme.\n\n(2) Instrument Serif is the voice of cinema.\n- Title: 'First' in Regular plus 'Light' in Italic, 200px, tracking -0.005em, Bone.\n- Corridor brackets: Regular, 700px, Bone, vertically centred on their measured glyph bounds.\n\n(3) Inter Tight is held in reserve and deliberately unused. Restraint is the system.\n\nThe title's full stop is not a glyph. It is a 24px vermilion circle: the sun, and before that the cursor.\n\nTITLE_LAYOUT (film.ts):\n- Computed with @remotion/layout-utils measureText, only after fonts.ts loadFont resolves, behind delayRender/continueRender. Never hard-coded.\n- wF = width('First ', Regular 200px), about 337px. wL = width('Light', Italic 200px), about 370px. W = wF + wL + 8 + 24, about 739px.\n- left = 960 - W/2, about 590. Baseline y = 552 (cap height 0.72em = 144px, so caps occupy y 408-552; the italic 'g' descender reaches about y 595).\n- Full stop centre P = (left + wF + wL + 8 + 12, 540), about (1318, 540). Its bottom sits on the baseline and its centre is on the frame's horizontal axis.\n- Hairline: y = 622, x from left-24 to left+W+24 (about 566-1354).\n\nWord budget, one text block per shot:\n- s1: 3 words (`let light;` then `\u2190 undefined`)\n- s2: the label `(0, 0)`\n- s4: the counter\n- s5: 2 words (`light = `)\n- End card: 7 words (2-word title plus the 5-word credit 'WRITTEN IN CODE BY AI')\n\nEvery text entrance is animated: a motivated hard-on keystroke, a rise from behind a mask, or a per-character fade-up. All copy stays inside the 1720x880 safe area and inside the 2.39:1 letterbox (visible y 138-942).\n\nText that zooms (s1) is SVG text under a viewBox camera. CSS will-change is never applied to scaling text layers. Override the Camera helper's will-change: transform with auto, so Chrome re-rasterises the text crisp instead of upscaling a bitmap.",
+ "finishingLayer": "Global stack applied over all scenes, bottom to top. Use the existing components in /home/user/remotion-mvp/src/film/fx.tsx.\n\n(1) COLOUR GRADE: CSS filter contrast(1.05) saturate(1.04) on the scene root. The black point is the #07070A base, not crushed. No LUT: the restraint is the grade.\n\n(2) CHROMATIC ABERRATION: ChromaticAberration wrapper, on impact frames only (19 frames in total). Pass-through (amount 0, no filter mounted) on every other frame. Decays use EXPO_OUT.\n- 225-228: 2px to 0 (flight downbeat)\n- 375-380: 4px to 0 (cut on action into matter)\n- 600-607: 7px to 0 (ignition)\n\n(3) LIGHT LEAKS: LightLeak component, screen blend, only where the light is motivated. No other leaks anywhere.\n- 600-660: seed 3, hueShift 0, opacity peaking at 0.45. Attack 600-606, decaying to 0 by 660; progress maps 0 to 1 linearly across the window.\n- 705-765: seed 11, opacity 0.16. A soft warm drift behind the forming title, kept to the frame edges.\n\n(4) VIGNETTE: Vignette component, strength K.\n- 0.45 baseline.\n- Eases to 0.72 over 575-599 (IN_OUT): the held breath tightens the frame.\n- Snaps to 0.20 at 600: the light blows the frame open.\n- Eases back to 0.45 over 600-680, then holds to 839.\n\n(5) FILM GRAIN: the existing Grain component (six seeded 256px tiles, offset per frame by a frame hash), overlay blend.\n- Opacity 0.07 for 0-704; 0.05 for 705-839 (a clean title).\n- It also runs over the black frames 0-14, so the void reads as film rather than a dead screen.\n\n(6) LETTERBOX: Letterbox component, 2.39:1, 138px #000000 bars, always topmost.\n- amount 1 for 0-599.\n- Retracts 1 to 0 over 600-620 (EXPO_OUT): the ignition literally breaks the frame open to full 16:9.\n- 0 for 620-704.\n- Closes 0 to 1 over 705-735 (IN_OUT): the film reasserts its frame for the title.\n- 1 for 735-839.\n\nMOTION-BLUR BUDGET (exactly two moments):\n- s3, 352-374: manual 5-sample canvas accumulation.\n- s6, 600-614: @remotion/motion-blur Trail (6 layers, lagInFrames 0.35) on the blown-away `light = ` glyphs only.\n- No CameraMotionBlur anywhere.\n\nDETERMINISM:\n- Every value is a pure function of the global frame. Use rng from motion.ts and @remotion/noise with fixed seeds.\n- No Math.random, no simulation state, no useFrame or clocks.\n- Safe at concurrency 4.\n\nRENDER QA: before the full render, render stills at 60, 176, 300, 360, 470, 545, 640, 700 and 800, plus every boundary pair: 119/120, 224/225, 374/375, 524/525, 599/600, 704/705.",
+ "scenes": [
+  {
+   "id": "s1",
+   "startFrame": 0,
+   "endFrame": 119,
+   "title": "NULL: let light;",
+   "description": "Cold open in the void. The scene is ONE SVG whose viewBox is the camera, so glyphs re-rasterise crisp at 6x (never CSS-scale DOM text here). Background #07070A.\n\nWORLD LAYOUT (camera scale 1):\n- Line 1, `let light;`: JetBrains Mono 400 64px, one <text> per glyph at x = 768 + 38.4k (k = 0..9). The line spans x 768-1152, centred on 960. Baseline y = 563, so the caps sit centred on y = 540. Colours: 'let', the space and ';' are Ash #8A8A93; 'light' is Bone #EFEAE0.\n- Line 2, `\u2190 undefined`: JetBrains Mono 400 32px, Ash. Glyph k at x = 768 + 19.2k, baseline y = 626.\n- CURSOR: a flat vermilion #FF3D1F block, 36x70 world px, top y = 505, left = 768 + 38.4c (c = number of glyphs typed). Under it sits a soft halo: the same rect blurred (stdDeviation 4 world px, opacity 0.45). It is drawn in a screen-space layer through the shared worldToScreen(camS1(f)), so it can later detach from the camera.\n\nTIMELINE:\n- 0-14: black and grain only.\n- 15-44, HEARTBEAT: the cursor switches on at 15 at 6x macro, reading as a towering 216x420px vermilion monolith dead centre in the void. It blinks mechanically with 2-frame opacity ramps: on 15-22, off 23-29, on 30-37, off 38-44. It is solid from 45 to 97.\n- 45-72, TYPING: one keystroke every 3 frames at 45+3i (i = 0..9; the last, ';', lands at 72). Each glyph appears hard-on (a motivated keystroke) and the cursor jumps one cell right. The camera tracks the cursor at macro while it pulls out, so the giant letterforms slide past the lens.\n- 76-84: the console answers. `\u2190 undefined` fades 0 to 1 with translateY 10 to 0 world px (EXPO_OUT).\n- 96-111, NOTHING RETURNS, SO IT DISSOLVES: the 19 non-space glyphs (line 1, then line 2, left to right) each collapse scaleY 1 to 0 about their own baseline with opacity 1 to 0, over 6 frames (EXPO_IN), starting at 96 + 0.5k.\n- 98-108: the cursor flattens into a bar. Its screen size goes from about 37x73 to exactly 36x4px (IN_OUT), and its halo fades to 0.\n- 100-114: the bar glides from its end-of-line screen position (about 1176,540) to exactly (960,540) (IN_OUT).\n- 114-119: hold. A black frame with one vermilion bar.",
+   "camera": "A macro-to-establishing pull-out on a tracking SVG viewBox camera: viewBox = (cx - 960/s, cy - 540/s, 1920/s, 1080/s), computed by camS1(f) in film.ts.\n- 0-44: s goes 6.0 to 5.7 (ease.camera), with (cx, cy) on the cursor centre (786,540). An almost imperceptible macro drift on the heartbeats.\n- 45-78: s goes 5.7 to 1.0 (ease.expoInOut), and cx = lerp(trackX, 960, e) on the same easing. trackX is the mean cursor-centre x over frames f-3..f, computed analytically, so the camera follows the typing and then swings to a locked frame. One move from extreme close-up to establishing shot.\n- 78-119: locked tripod with a slow push, s 1.00 to 1.05 about (960,540) (SINE_IN_OUT).\n\nThe cursor rect always comes from the same camera function. From 98 it detaches into pure screen space for the flatten and glide, so the handoff is pixel-exact.",
+   "keyMoments": [
+    {
+     "frame": 0,
+     "event": "Black void, grain only; drone fades in"
+    },
+    {
+     "frame": 15,
+     "event": "Cursor switches on at 6x: a vermilion monolith (heartbeat 1, on the beat)"
+    },
+    {
+     "frame": 23,
+     "event": "Cursor off"
+    },
+    {
+     "frame": 30,
+     "event": "Cursor on (heartbeat 2)"
+    },
+    {
+     "frame": 38,
+     "event": "Cursor off"
+    },
+    {
+     "frame": 45,
+     "event": "Cursor on, first keystroke 'l', pull-out begins (beat)"
+    },
+    {
+     "frame": 72,
+     "event": "Last keystroke ';'"
+    },
+    {
+     "frame": 76,
+     "event": "`\u2190 undefined` rises in"
+    },
+    {
+     "frame": 78,
+     "event": "Pull-out lands at 1.0x: the full line is revealed"
+    },
+    {
+     "frame": 96,
+     "event": "Glyphs begin collapsing left to right"
+    },
+    {
+     "frame": 98,
+     "event": "Cursor starts flattening into a bar"
+    },
+    {
+     "frame": 114,
+     "event": "Bar arrives dead centre; hold"
+    }
+   ],
+   "onScreenText": [
+    "`let light;`: JetBrains Mono 400, 64px; 'let' and ';' Ash #8A8A93, 'light' Bone #EFEAE0; world x 768-1152, baseline y 563",
+    "`\u2190 undefined`: JetBrains Mono 400, 32px, Ash #8A8A93; world left x 768, baseline y 626"
+   ],
+   "technique": "- React plus one inline <svg width=1920 height=1080> with an animated viewBox: the camera.\n- Per-glyph <text> elements, so each glyph can collapse with transform scale(1,sy) about its baseline.\n- The cursor is an absolutely positioned div in screen space (worldToScreen).\n- Fonts come from src/film/fonts.ts. Gate the first frame with delayRender until document.fonts.load('400 64px \"JetBrains Mono\"') resolves, so the SVG text never renders in a fallback font.\n- Typing reveal: visible count = clamp(floor((f-45)/3)+1, 0, 10).\n- The blink is a square wave softened by 2-frame interpolate ramps. Keystrokes and the blink are the only deliberately mechanical motion.\n- No canvas, no motion blur, no will-change. Local frame = global frame.",
+   "handoffIn": "Film start. Frame 0 is pure #07070A with global grain and the vignette; the letterbox bars are present but invisible against black.",
+   "handoffOut": "Frame 119: a black #07070A field inside the 2.39 letterbox. The ONLY element is a flat vermilion #FF3D1F bar, 36x4px, centred exactly on (960,540) in screen space (x 942-978, y 538-542). No text, no glow, no camera scale applied to it."
+  },
+  {
+   "id": "s2",
+   "startFrame": 120,
+   "endFrame": 224,
+   "title": "THE LINE: origin, grid, and the fall into a floor",
+   "description": "From one line, a world grid. Everything is drawn on one canvas using film.ts projection: a plane point (u,v) (px from centre; v positive downward) maps to world X = u, Y = Yo + v\u00b7cos(th), Zw = -1100 + v\u00b7sin(th). With th = 0, Yo = 0 and camZ = 0 this is exactly the flat 1:1 frame.\n\n120-134, THE FIRST LINE:\n- The bar stretches symmetrically to full frame width: width 36 to 1920 (SNAP), height 4 to 2px.\n- Its colour goes from vermilion #FF3D1F to Bone #EFEAE0 (interpolateColors over 120-134).\n\n140-162, RULES:\n- Six Graphite #3A3A42 1.25px horizontal rules peel off the centre line and slide to y = 540 \u00b1 120k for k = 1, 2, 3 (y 420/660, then 300/780, then 180/900).\n- Rule k starts at 140 + 3(k-1) and takes 16 frames, Easing.out(Easing.poly(4)).\n- The centre line stays Bone 2px.\n\n150-176, COLUMNS:\n- 17 Graphite 1.25px verticals at x = 960 + 120m (m = -8..8) draw from y = 540 outward in both directions (half-length 0 to 540, 14 frames, EXPO_OUT).\n- Each starts at 150 + 1.5|m|, from the centre outward.\n\n166-186, ORIGIN LABEL: `(0, 0)` sits up and to the right of the centre intersection (fade in 166-172, fade out 180-186).\n\n176-188: the finished Swiss modular grid holds perfectly still. Twelve frames of order.\n\n188-224, THE TILT: the grid is a true 3D plane and lies down into an infinite floor.\n- q = (f-188)/36, e = SNAP(q). th = 90\u00b0\u00b7e and Yo = 380\u00b7e. SNAP accelerates hard, then lands softly, so the horizon drops in from the top and settles on y = 540 with no jolt.\n- The plane already contains lines that are off-screen or under the letterbox in the flat state: transverse lines at v = 120k (k = -130..8) and longitudinal lines at u = 120m (m = -24..24), spanning v from -15600 to +960. Lines with |k| >= 4 have alpha 0 before 188. As the floor forms, they swing into view.\n- From 200 the camera starts moving forward: camZ = -0.35\u00b7(f-200)\u00b2 (camZ = -201.6, speed 16.8 px/f at 224).\n- The Bone first line (v = 0) slides down and out of the bottom of the frame.\n- Depth fog on all floor lines: alpha \u00d7= 1 - smoothstep(2200, 7500, depth).\n- Every segment is clipped against the near plane (depth >= 60) before projection, and positions are rounded to 0.5px.",
+   "camera": "Locked-off and graphic for 120-188: the precision of the drawing is the motion. Then a 90-degree tilt and crane on SNAP easing: the page falls back into a floor while the eye ends 380px above it. The forward dolly starts under the tilt at 200, so the scene exits already travelling: continuous action into s3's speed ramp.",
+   "keyMoments": [
+    {
+     "frame": 120,
+     "event": "Bar begins stretching edge to edge (whoosh, beat)"
+    },
+    {
+     "frame": 134,
+     "event": "Line fully Bone"
+    },
+    {
+     "frame": 140,
+     "event": "First rules peel off the line (glass ticks)"
+    },
+    {
+     "frame": 150,
+     "event": "Vertical lines begin drawing from the centre out"
+    },
+    {
+     "frame": 166,
+     "event": "`(0, 0)` origin label appears"
+    },
+    {
+     "frame": 176,
+     "event": "Grid complete: a still Swiss grid"
+    },
+    {
+     "frame": 188,
+     "event": "Tilt begins (riser)"
+    },
+    {
+     "frame": 200,
+     "event": "Camera starts moving forward"
+    },
+    {
+     "frame": 224,
+     "event": "Floor settled horizontal, horizon at y=540, camera gliding forward at 16.8 px/f"
+    }
+   ],
+   "onScreenText": [
+    "`(0, 0)`: JetBrains Mono 400, 18px, Ash #8A8A93, letter-spacing 0.06em, left edge x=972, baseline y=528; visible 166-186"
+   ],
+   "technique": "- A single 1920x1080 <canvas> redrawn in useLayoutEffect from useCurrentFrame (local frame = global - 120).\n- The bar extension and every draw-on run on the same canvas through film.ts project() and drawFloor(). Each line's drawn extent (its u or v range) is clamped per frame. lineWidth is 1.25 for Graphite and 2 for Bone, lineCap 'butt'.\n- Longitudinal lines are drawn as 600-unit segments, each with its own fog alpha.\n- The origin label is a DOM span over the canvas.\n- No CSS 3D, which avoids behind-camera artifacts as the plane passes the viewer.",
+   "handoffIn": "Frame 120 is identical to s1 frame 119: black, with a vermilion 36x4 bar centred on (960,540). It starts stretching on this frame.",
+   "handoffOut": "Frame 224: a horizontal floor (th = 90\u00b0, Yo = 380, the tilt fully settled with zero angular velocity). camZ = -201.6, moving forward at about 17 px/frame. The horizon is at y = 540 with an empty black sky above. Graphite longitudinal lines converge on the vanishing point (960,540); transverse lines approach the camera and fog out toward the horizon. The Bone first line is already below the frame. No text."
+  },
+  {
+   "id": "s3",
+   "startFrame": 225,
+   "endFrame": 374,
+   "title": "STRUCTURE: the corridor of brackets",
+   "description": "Code's enclosures become architecture, and the camera speed-ramps through them. Same world, projection and canvas helpers as s2.\n\nFLOOR:\n- Longitudinal rails at X = 120m (m = -24..24), from Zw = -140 to -16700, drawn as 600-unit segments with per-segment fog: fog = 1 - smoothstep(2200, 7500, depth). Graphite #3A3A42, 1.25px, alpha 0.9\u00b7fog.\n- Transverse lines at Zw = -1100 + 120k (k = -130..8), same style, with alpha additionally \u00d7(1 - smoothstep(296, 322, f)). They fade out as the camera passes about 40 px/f, before they can wagon-wheel strobe against their 120-unit spacing.\n- Floor height Y eases 380 to 330 over 240-374 (SINE_IN_OUT): the camera lowers as it accelerates.\n\nSPEED DASHES (these replace the transverse lines as the speed cue):\n- 220 seeded Bone #EFEAE0 1.5px segments lying on the floor plane. X is uniform in \u00b1[140, 2400].\n- Z repeats every 9000 units relative to the camera: depth_i = ((Z0_i - camZ) mod 9000 + 9000) mod 9000.\n- Each is drawn from proj(Z) to proj(Z + L), with L = clamp(2.4\u00b7v, 8, 560) world units, where v is this frame's camera speed. Alpha 0.55\u00b7fog, 'lighter' composite. They fade in over 296-312.\n- They are long at speed, so they act as their own motion blur and never strobe.\n\nBRACKETS:\n- Five billboarded pairs in Instrument Serif Regular 700px, Bone. The opener glyph is centred at X = -460 and the closer at X = +460. Each is vertically centred on Y = -40 using measured glyph bounds, so it spans about Y -333 to +253 and floats above the floor.\n- Pairs: Zw -1600 '{' '}', -2800 '(' ')', -4000 '[' ']', -5200 '(' ')', -6400 '{' '}'. Screen scale = 1100/depth.\n- ENTRANCE (nothing pops): pair k (k = 0..4) materialises at 228 + 7k over 22 frames (EXPO_OUT). It rises from translateY +260 world units to 0, alpha 0 to its fog alpha, extra blur 12 to 0px.\n- FOG: fogA = clamp(1.15 - depth/4800, 0.06, 1). The near fade multiplies alpha by smoothstep(160, 400, depth). Pairs are culled below depth 160.\n- RACK FOCUS: focusDepth = depth of the nearest pair still ahead (minimum 500). blur = min(8, |depth - focusDepth|/300) px, so each pair snaps sharp as it becomes next while the others breathe out of focus.\n\nVANISHING STAR at (960,540): a Bone core of 2.5px plus a radial glow of r = 18 at alpha 0.5. The glow grows to r = 120, alpha 0.9, over 330-374 (EXPO_IN).\n\nANAMORPHIC FLARE, 366-374: a horizontal gradient bar (transparent, then Bone, then transparent) 2px tall, plus a 24px-tall blurred twin at 30%. Width 300 to 1600px, alpha 0 to 0.7 (EXPO_IN), centred on the star.",
+   "camera": "Forward dolly with a true speed ramp: camZ(f) = -218.75 - 7200\u00b7(0.35p + 0.65p\u2074), with p = (f-225)/149.\n- Speed starts at 16.9 px/f, matching the s2 exit, and accelerates to about 142 px/f at 374.\n- The bracket pairs pass the lens at 294, 324, 342, 356 and 366 (verified against the formula). This accelerating cadence is what the soundtrack locks to.\n- Lateral sway: camX = 36\u00b7sin((f-225)/38) px; objects shift by -camX.\n- Roll: rotateZ 0 to -5\u00b0 about (960,540) over 300-374 (Easing.in(Easing.cubic)).\n- The brackets give real parallax against the floor and the infinitely distant star.",
+   "keyMoments": [
+    {
+     "frame": 225,
+     "event": "Downbeat: the flight accelerates (sub hit, CA 2px)"
+    },
+    {
+     "frame": 228,
+     "event": "First bracket pair begins rising out of the dark"
+    },
+    {
+     "frame": 256,
+     "event": "All five pairs materialised"
+    },
+    {
+     "frame": 294,
+     "event": "Pass pair 1 '{ }'"
+    },
+    {
+     "frame": 296,
+     "event": "Transverse lines start fading; speed dashes take over"
+    },
+    {
+     "frame": 300,
+     "event": "Roll and long riser begin"
+    },
+    {
+     "frame": 324,
+     "event": "Pass pair 2 '( )'"
+    },
+    {
+     "frame": 342,
+     "event": "Pass pair 3 '[ ]'"
+    },
+    {
+     "frame": 352,
+     "event": "Manual 5-sample motion blur engages"
+    },
+    {
+     "frame": 356,
+     "event": "Pass pair 4 '( )'"
+    },
+    {
+     "frame": 366,
+     "event": "Pass pair 5 '{ }'; anamorphic flare ignites"
+    },
+    {
+     "frame": 374,
+     "event": "Flare at peak, maximum velocity: cut on action"
+    }
+   ],
+   "onScreenText": [
+    "(no copy) Graphic glyphs only: { } ( ) [ ] ( ) { } in Instrument Serif Regular 700px, Bone #EFEAE0"
+   ],
+   "technique": "- One <canvas>, using the shared project() and drawFloor() (local frame = global - 225).\n- Brackets: ctx.fillText at a fontSize of 700\u00b7scale, centred from ctx.measureText actualBoundingBoxAscent/Descent. ctx.filter = 'blur(Npx)' per glyph (10 draws per frame), with globalAlpha for fog. Draw back to front by depth.\n- Speed dashes: one batched path per 4-level alpha bucket, 'lighter' composite.\n- Motion blur at 352-374 is MANUAL: render 5 sub-frame samples (f-0.8, -0.6, -0.4, -0.2, 0) into an offscreen canvas at globalAlpha 0.2 each, then blit. camZ is analytic, so sub-frames are exact.\n- Star and flare are radial/linear gradients drawn last, with 'lighter'.\n- No WebGL, no CSS 3D.",
+   "handoffIn": "Frame 225 continues s2 exactly: same floor geometry, floor Y = 380, camZ = -218.75 moving forward at about 17 px/f, horizon at y = 540. The brackets are not yet visible; pair 0 begins rising at 228.",
+   "handoffOut": "Frame 374: maximum forward velocity (about 142 px/f), roll -5\u00b0. All brackets are behind the camera. Graphite rails and long Bone speed dashes smear through the lower half. The anamorphic flare is at peak: a 1600px-wide horizontal Bone streak (alpha 0.7) through a blazing star at (960,540) with glow r = 120, alpha 0.9."
+  },
+  {
+   "id": "s4",
+   "startFrame": 375,
+   "endFrame": 524,
+   "title": "MATTER: chaos compiles into a world",
+   "description": "Cut on action into deep space made of code. 4096 particles come from the shared sphere.ts module: seeded with rng(7) from motion.ts and precomputed once as Float32Arrays. Start positions are at radius 300-2600 around the Z axis (the centre is kept clear for the flare), with Zw uniform in [-300, -9000].\n\n375-405, FLY-THROUGH, DECELERATING:\n- camZ = -1400\u00b7easeOutCubic((f-375)/30). The initial speed of 140 px/f matches the s3 exit.\n- Each particle is a streak from its projection at f-1 to its projection at f (both recomputed, no state), capped at 240px. Bone, lineWidth 1-2px by proximity, alpha 0.15-0.85 by depth fog. Particles behind depth 60 are culled.\n- The inherited light decays: flare alpha 0.7 to 0 and width 1600 to 2200 over 375-383 (EXPO_OUT); star glow r 120 to 0 over 375-387.\n- Roll unwinds from -5\u00b0 to 0 over 375-405 (EXPO_OUT).\n\n400-470, ASSEMBLY (order from chaos):\n- Particle i flies to its Fibonacci-sphere target: y = 1 - 2(i+0.5)/4096, ring radius = sqrt(1-y\u00b2), \u03c6 = i\u00b72.39996. Sphere radius R = 320, centred at Zw = -2500 (1100 in front of the resting camera, so it is screen-centred at 1:1).\n- Start time s_i = 400 + 30\u00b7rank_i, where rank_i is the normalised distance to target (nearest first). Duration 40 frames, IN_OUT.\n- A seeded swirl offset is added: per axis noise3D(i\u00b70.013, axisSeed, f\u00b70.02) \u00d7 260 \u00d7 sin(\u03c0\u00b7progress), so paths arc instead of flying straight. All particles arrive by 470.\n\n465-524, THE WORLD:\n- The sphere rotates about Y by \u03b8(f), a closed form in sphere.ts: 0.4\u00b0/f from 400, rising to 1.6\u00b0/f over 465-524 with Easing.in(Easing.quad). \u03b8(524) = 73.2\u00b0. There is a fixed X tilt of 16\u00b0.\n- Shading by frontness (0 at the back, 1 at the front): dot radius = max(1.0, 1.1\u00b7(1100\u00b7zoom/depth)\u00b7(0.7 + 0.6\u00b7frontness)) px; alpha = 0.2 + 0.65\u00b7frontness.\n- CODE MATTER: a seeded 8% subset (about 330 particles) draws as pre-rendered JetBrains Mono glyph sprites (0 1 { } ; =, 18px Bone, rasterised at 2x) instead of dots whenever frontness > 0.65. Up close, the world is made of code.\n- BEAT PULSES: R multiplies by 1.05 at 465, 480, 495 and 510, decaying to 1.0 over 10 frames (Easing.out(quad)).\n- VERMILION CORE: a radial gradient at the sphere centre, radius 200: rgba(255,61,31,a) at 0, a\u00b70.4 at 0.4, 0 at 1, 'lighter'. a rises 0 to 0.45 over 455-524: the first warmth since the cursor.\n\nCOUNTER: `0000 / 4096` shows the number of particles at progress >= 0.98, zero-padded. It fades up over 400-410 and reads `4096 / 4096` from 470.",
+   "camera": "A decelerating forward dolly through the field, a speed ramp down that mirrors the s3 ramp up, landing at rest at 405 with the roll level. Then a slow push-in on the formed world: the focal multiplier (zoom) goes 0.94 to 1.06 over 430-524 (SINE_IN_OUT), so the sphere's apparent radius ends at about 339px. The sphere's own rotation provides orbiting parallax as front particles sweep past back ones.",
+   "keyMoments": [
+    {
+     "frame": 375,
+     "event": "Cut on action: the code field streaks outward, flare still at peak (impact, CA 4px)"
+    },
+    {
+     "frame": 383,
+     "event": "Flare gone"
+    },
+    {
+     "frame": 400,
+     "event": "Assembly begins; counter fades up"
+    },
+    {
+     "frame": 405,
+     "event": "Camera at rest, roll level"
+    },
+    {
+     "frame": 455,
+     "event": "Vermilion core begins to glow"
+    },
+    {
+     "frame": 465,
+     "event": "Sphere essentially formed; first beat pulse"
+    },
+    {
+     "frame": 470,
+     "event": "Counter reads 4096 / 4096"
+    },
+    {
+     "frame": 480,
+     "event": "Beat pulse 2"
+    },
+    {
+     "frame": 495,
+     "event": "Beat pulse 3"
+    },
+    {
+     "frame": 510,
+     "event": "Beat pulse 4"
+    },
+    {
+     "frame": 524,
+     "event": "Sphere spinning at 1.6\u00b0/f, core glow 0.45"
+    }
+   ],
+   "onScreenText": [
+    "`0000 / 4096` counting to `4096 / 4096`: JetBrains Mono 400, 20px, letter-spacing 0.2em, tabular figures, Ash #8A8A93, centred on x=960, baseline y=884"
+   ],
+   "technique": "- Canvas 2D, more robust than software WebGL here (local frame = global - 375).\n- Positions are a pure function of the global frame via sphereState(f) in sphere.ts, so any frame renders independently.\n- Dots: arc() batched into one path per alpha bucket (8 buckets) to minimise state changes, with globalCompositeOperation 'lighter', so no per-frame depth sort is needed.\n- Glyph particles: drawImage from sprites built once after the fonts load.\n- The flare and star decay are drawn with the same gradient code as s3, imported from film.ts.\n- The counter is a DOM span.",
+   "handoffIn": "Frame 375: the same forward velocity (about 140 px/f) and -5\u00b0 roll as the s3 exit. The anamorphic flare (1600px, alpha 0.7) and the star glow (r = 120, alpha 0.9) are at peak across the centre. Floor and brackets are gone; a deep field of Bone code particles streaks radially outward from the centre.",
+   "handoffOut": "Frame 524: a perfect Fibonacci sphere of 4096 Bone code particles, apparent radius about 339px (zoom 1.06), centred on (960,540). It spins at 1.6\u00b0/frame (\u03b8 = 73.2\u00b0) with a 16\u00b0 tilt. The vermilion core glows at alpha 0.45 (radius 200). The counter reads `4096 / 4096` at bottom centre."
+  },
+  {
+   "id": "s5",
+   "startFrame": 525,
+   "endFrame": 599,
+   "title": "HOLD: light =",
+   "description": "The held breath.\n\n525-551, COLLAPSE (the same sphere.ts renderer and state as s4):\n- Every particle's radius factor rf = 1 - EXPO_IN((f-525)/26), reaching 0 at 551.\n- Angular velocity spins up from 1.6 to 9\u00b0/frame (Easing.in(quad); closed-form \u03b8 in sphere.ts).\n- Particles draw short tangential streaks with length proportional to \u03c9\u00b7r.\n- Particle alpha \u00d7= smoothstep(0, 0.3, rf), so 4096 additive particles never stack into a white blob at the centre.\n- Over 543-551 the particle colour lerps from Bone to vermilion #FF3D1F.\n- The core glow concentrates: radius 200 to 36, alpha 0.45 to 1.0.\n- The counter fades out over 525-535 (opacity to 0, translateY 0 to 6).\n\n551, SETTLE:\n- The canvas is cleared and replaced by a DOM dot: a flat vermilion circle, 14px diameter, at (960,540), with glow box-shadow 0 0 18px 2px rgba(255,61,31,0.55).\n- It enters at scale 1.9 and springs to 1.0 (Remotion spring, damping 12, mass 0.6, about 12 frames).\n- The whole world, condensed to a point.\n\n554-580, REFRAME: the world group translates X 0 to +154px (IN_OUT), so the dot travels to S5_DOT (1114,540).\n\n556-570, TYPING:\n- `light = ` types to the left of the dot, one cell every 2 frames at 556+2i (i = 0..7: l, i, g, h, t, space, =, space).\n- JetBrains Mono 400 64px. 'light' is Bone, '=' is Ash.\n- The glyphs live inside the world group at world left x = 633.2, so after the pan their screen left edge is exactly 787.2.\n- `light = \u25cf` reads as one centred 9-cell line, with the dot in cell 9 (cell centre 1113.6).\n- Vertical alignment: the centre of the '=' bars sits exactly on y = 540, level with the dot centre (measure the glyph once; the baseline is about y = 561).\n\n580-599, HELD BREATH:\n- Total stillness.\n- A slow push-in, 1.00 to 1.035 over 560-599 (SINE_IN_OUT), with transform-origin AT THE DOT (1114,540), so the dot never moves.\n- Rack focus off the code and onto the value over 584-599: text blur 0 to 2.5px, opacity 1 to 0.72, while the dot stays tack-sharp.\n- The global vignette tightens and the sound is cut to silence.",
+   "camera": "The collapse takes the frame from establishing scale down to a single point: wide to extreme close-up within one scene. Then a motivated reframe pan (+154px) makes room for the code, followed by a barely perceptible push-in anchored on the dot, with a rack focus from the text to the dot. Stillness is the move.",
+   "keyMoments": [
+    {
+     "frame": 525,
+     "event": "Collapse begins; reverse swell (beat)"
+    },
+    {
+     "frame": 535,
+     "event": "Counter gone"
+    },
+    {
+     "frame": 543,
+     "event": "Particles shift to vermilion"
+    },
+    {
+     "frame": 551,
+     "event": "The world becomes one vermilion point (felt thump)"
+    },
+    {
+     "frame": 554,
+     "event": "Reframe pan begins"
+    },
+    {
+     "frame": 556,
+     "event": "First keystroke of `light = `"
+    },
+    {
+     "frame": 570,
+     "event": "Last keystroke"
+    },
+    {
+     "frame": 580,
+     "event": "HARD DROPOUT TO SILENCE: held breath begins"
+    },
+    {
+     "frame": 584,
+     "event": "Rack focus begins pulling off the text onto the dot"
+    },
+    {
+     "frame": 599,
+     "event": "Peak tension: dot sharp, code soft, vignette at 0.72"
+    }
+   ],
+   "onScreenText": [
+    "`light = `: JetBrains Mono 400, 64px; 'light' Bone #EFEAE0, '=' Ash #8A8A93; final screen left edge x=787.2, '=' bars centred on y=540; the vermilion dot occupies cell 9 at (1114,540)"
+   ],
+   "technique": "Two layers (local frame = global - 525).\n(a) 525-550: the s4 canvas renderer, imported from sphere.ts and driven by the GLOBAL frame. The seeds, the accumulated rotation integral and zoom 1.06 are identical to s4, not approximated.\n(b) From 551: a DOM world div containing the dot div and per-glyph spans, translated with tween().\n- The push-in is a CSS scale on a wrapper with transform-origin '1114px 540px' and will-change auto.\n- The rack focus is a CSS filter blur on the text spans only.\n- spring() from remotion.",
+   "handoffIn": "Frame 525 matches the s4 exit: a Fibonacci sphere of 4096 particles, apparent radius about 339px, centred (960,540), spinning 1.6\u00b0/f, \u03b8 = 73.2\u00b0, tilt 16\u00b0. Core glow 0.45, counter `4096 / 4096`.",
+   "handoffOut": "Frame 599: a black frame inside the 2.39 letterbox. `light = ` sits at the left in Bone and Ash, slightly soft (blur 2.5px, opacity 0.72, scaled 1.035 about the dot). The vermilion dot (about 14.5px on screen, sharp, 18px glow) is at exactly (1114,540). Vignette 0.72. Silence."
+  },
+  {
+   "id": "s6",
+   "startFrame": 600,
+   "endFrame": 704,
+   "title": "IGNITION: first light",
+   "description": "The assignment executes. The value of light is light.\n\n600, HIT FRAME (bar 10 downbeat):\n- The dot jumps to a 220px disc centred on (1114,540). Fill: radial-gradient with Hot core #FFF4E8 at 0%, vermilion #FF3D1F by 55%, #FF3D1F at the edge.\n- Bloom: box-shadow 0 0 140px 40px rgba(255,61,31,0.6), decaying to 0 0 60px 10px rgba(255,61,31,0.35) by 630.\n- The hot-core stop shrinks from 55% to 0% over 600-640, so the sun settles into a flat Bass vermilion.\n- A full-frame ember #FF8A3D flash (mix-blend screen) goes from opacity 0.6 at 600 to 0 at 609 (Easing.out(quad)).\n- SHOCKWAVE: a soft ring (a div with a radial-gradient profile: transparent to r-28, rgba(239,234,224,0.85) at r-2, transparent at r+4, so it cannot alias). Centred (1114,540), radius 10 to 1500 over 600-628 (EXPO_OUT), opacity 0.9 to 0.\n- DEBRIS: the remnant `light = ` text is blown left over 600-614 (Easing.out(cubic)). Glyph j, counted from the right, moves translateX -(240+60j)px, with seeded translateY \u00b140px and rotate \u00b112\u00b0, blur 0 to 10px, opacity to 0.\n\n602-632, THE SUN TAKES THE HORIZON:\n- The disc centre travels from (1114,540) to (960,690) while its diameter grows 220 to 1160 (EXPO_OUT).\n- The disc container is clipped at the horizon, clip-path inset(0 0 calc(1080px - horizonY) 0), so a monumental vermilion half-disc (radius 580, top about y = 110) stands on the horizon.\n- HORIZON: a Bone 2px line at y = 690 draws from x = 960 outward to both frame edges over 604-628 (EXPO_OUT), in front of the disc.\n- 632-678: the sun keeps rising slowly, centre y 690 to 662 (SINE_IN_OUT).\n\nREFLECTION (Bass-style, made of lines):\n- 16 horizontal vermilion strips below the horizon. Strip j (0..15) sits at y = 698 + 12j + 0.7j\u00b2, with height 3 + 0.5j px.\n- Width = 0.9\u00b72\u00b7sqrt(R\u00b2 - d\u00b2), where d = (y-690)\u00b71.6 (width 0 if d > R). Centred at x = 960 + noise2D('refl'+j, f\u00b70.06)\u00b718. Opacity 0.55\u00b7(1 - j/16).\n- Strip j scales in, scaleX 0 to 1, at 606 + 1.2j over 14 frames (EXPO_OUT).\n\nRAYS (soft wedges, no thin strokes):\n- A 4000px layer centred on the sun, clipped to above the horizon, filled with repeating-conic-gradient: rgba(239,234,224,0) at 0\u00b0, rgba(239,234,224,0.16) at 1.2\u00b0, rgba(239,234,224,0) at 2.4\u00b0, and clear to 10\u00b0. That gives 18 rays over the upper half.\n- Revealed outward by an animated radial mask (transparent to R+30, opaque from R+60 to Rm, fading out by Rm+240). Rm goes 600 to 2400 over 628-650 (EXPO_OUT).\n- The fan rotates +4\u00b0 over 628-704 (SINE_IN_OUT).\n\n666-704, THE SUN BECOMES THE FULL STOP:\n- Rays retract (Rm back to 600, Easing.in(cubic), 666-682).\n- Reflection strips go scaleX to 0 (Easing.in(cubic), 670-684).\n- Over 678-704 (Easing.inOut(Easing.exp)), the disc shrinks 1160 to 24px and flies to the title full-stop position P from TITLE_LAYOUT (about 1318,540).\n- Over the same frames and easing, the horizon rises from y = 690 to y = 622, thins 2 to 1px, and contracts from full width to [TITLE.left-24, TITLE.left+W+24] (about x 566-1354). It is always the clip edge, so the sun lifts off it.\n- The bloom shrinks to 0 0 14px rgba(255,61,31,0.5).",
+   "camera": "Impact punch, then a majestic pull-out.\n- Zoom punch 1.00 to 1.10 over 600-604 (EXPO_OUT), transform-origin (960,600).\n- Slow pull-out 1.10 to 1.00 over 604-676 (IN_OUT): the establishing reveal of the sunrise vista. It completes before the shrink, so P lands at scale 1 exactly.\n- Camera shake over 600-610: translate x,y = noise2D('shake', f\u00b70.9)\u00b714\u00b7(1-q)\u00b2, rotate 0.5\u00b0\u00b7noise, decaying to zero.\n- The global letterbox retracts over 600-620: the light literally breaks the frame open to full 16:9.",
+   "keyMoments": [
+    {
+     "frame": 600,
+     "event": "IGNITION: dot becomes a 220px disc, ember flash, shockwave, letterbox starts opening, `light =` blown away"
+    },
+    {
+     "frame": 604,
+     "event": "Zoom punch peaks; horizon line begins drawing"
+    },
+    {
+     "frame": 606,
+     "event": "Reflection strips begin; the 'light' chord swells"
+    },
+    {
+     "frame": 614,
+     "event": "Text debris gone"
+    },
+    {
+     "frame": 620,
+     "event": "Letterbox fully open (full frame)"
+    },
+    {
+     "frame": 628,
+     "event": "Half-disc sun locked on the horizon; rays begin extending"
+    },
+    {
+     "frame": 650,
+     "event": "Rays fully extended: the sunrise tableau"
+    },
+    {
+     "frame": 666,
+     "event": "Rays begin retracting"
+    },
+    {
+     "frame": 678,
+     "event": "Sun begins shrinking toward the title full stop; horizon rises and contracts"
+    },
+    {
+     "frame": 704,
+     "event": "Sun is a 24px vermilion full stop at P; horizon is a 1px hairline at y=622"
+    }
+   ],
+   "onScreenText": [
+    "(no copy) The only type is the remnant `light = ` from s5, blown off-screen over 600-614"
+   ],
+   "technique": "- DOM/CSS composition (local frame = global - 600).\n- The disc is a div with a radial-gradient and border-radius 50%, inside a container whose clip-path follows horizonY every frame.\n- The shockwave is a radial-gradient div.\n- The rays are one CSS repeating-conic-gradient layer with a radial mask; the soft stops prevent jagged edges.\n- The reflection is 16 absolutely positioned divs.\n- The debris is per-glyph spans wrapped in @remotion/motion-blur <Trail layers={6} lagInFrames={0.35}>, mounted only for 600-614.\n- Noise comes from @remotion/noise.\n- TITLE_LAYOUT is read from film.ts, so P and the hairline extents match s7 exactly.\n- No SVG filters, no feTurbulence.",
+   "handoffIn": "Frame 600 is the s5 exit state (vermilion dot at (1114,540), soft `light = ` to its left, letterbox at 138px). On this exact frame it ignites: a hard, motivated hit on the bar-10 downbeat.",
+   "handoffOut": "Frame 704: letterbox fully open (0px), black frame. A 1px Bone hairline at y = 622 spans TITLE.left-24 to TITLE.left+W+24 (about x 566-1354). A 24px vermilion circle sits at the title full-stop position P (about 1318,540) with a small glow, 0 0 14px rgba(255,61,31,0.5). Nothing else: no rays, reflection, ring or text."
+  },
+  {
+   "id": "s7",
+   "startFrame": 705,
+   "endFrame": 839,
+   "title": "TITLE: First Light.",
+   "description": "Resolve. The global letterbox closes back to 2.39:1 over 705-735 (IN_OUT): the film reasserts its frame.\n\n'First Light' is laid out with TITLE_LAYOUT: Instrument Serif 200px, 'First' Regular and 'Light' Italic, Bone #EFEAE0, centred including the full stop, baseline y = 552. The vermilion full stop from s6 is already in place at P and never moves.\n\n707-747, LETTERS RISE FROM BEHIND THE HORIZON, like suns:\n- Each of the 10 glyphs sits in one mask container whose bottom edge is the hairline y = 622 (overflow hidden), so the italic 'g' descender (to about y 595) clears it.\n- Glyph i rises translateY +230px to 0, with blur 8 to 0px, over 22 frames (EXPO_OUT), starting at 707 + 2i, left to right. The final 't' lands at 747.\n\n750: the full stop answers with one pulse: scale 1 to 1.18 to 1 (spring, damping 10, mass 0.5), glow 14 to 26 to 14px.\n\n744-764, HAIRLINE EXIT: the hairline contracts from both ends toward its centre (scaleX 1 to 0, IN_OUT) while fading to 0. The title stands alone, with no underline.\n\n752-765, CREDIT: `WRITTEN IN CODE BY AI`, JetBrains Mono 300, 19px, uppercase, letter-spacing 0.28em, Ash #8A8A93, centred at x = 960, baseline y = 676. Each of the 17 visible characters goes opacity 0 to 1 and translateY 6 to 0 over 6 frames (Easing.out(cubic)), staggered 0.4 frames, with spaces skipped.\n\n765-839, THE HELD CARD (75 frames = 2.5 s, complete and legible; the title alone is legible from 747, about 3.1 s):\n- 776-806, SPECULAR SWEEP: one warm band of 'first light' crosses the title letters only (not the full stop or the credit). Each glyph span gets color transparent, background-clip:text, and background linear-gradient(100deg, #EFEAE0 0, #EFEAE0 calc(X - 70px), #FFF4E8 X, #EFEAE0 calc(X + 70px), #EFEAE0 100%). X is in title coordinates, offset per glyph by its own left. X travels from TITLE.left-200 to TITLE.left+W+200 (SINE_IN_OUT). The highlight peaks at 85% mix.\n- 819-826, BOOKEND: the full stop blinks once like the frame-15 cursor. Opacity goes 1 to 0.12 over 819-821, holds to 824, and returns to 1 over 824-826, with the same tick sound. The program is still running.\n- 826-839: absolute stillness except the camera breath. Frame 839 is the clean title card. There is no fade to black; only the sound tail decays.",
+   "camera": "A settling push-in across the whole card: scale 1.00 to 1.03 about (960,540) over 705-839 (Easing.out(Easing.sin)), with will-change auto so the serif stays crisp. The reveal itself is the motion (letters rising through the horizon); the camera only breathes. It starts at exactly 1.00 at 705, so the full stop does not jump at the cut.",
+   "keyMoments": [
+    {
+     "frame": 705,
+     "event": "Full stop lands (tonk, beat); letterbox begins closing; light leak 2 begins"
+    },
+    {
+     "frame": 707,
+     "event": "First glyph 'F' begins rising from behind the hairline"
+    },
+    {
+     "frame": 735,
+     "event": "Letterbox closed at 2.39:1"
+    },
+    {
+     "frame": 744,
+     "event": "Hairline begins contracting"
+    },
+    {
+     "frame": 747,
+     "event": "Last glyph lands: title complete"
+    },
+    {
+     "frame": 750,
+     "event": "Full stop pulses (bell, beat)"
+    },
+    {
+     "frame": 752,
+     "event": "Credit line begins revealing"
+    },
+    {
+     "frame": 765,
+     "event": "Title card complete; the 2.5 s hold begins"
+    },
+    {
+     "frame": 776,
+     "event": "Specular 'first light' sweep crosses the title"
+    },
+    {
+     "frame": 806,
+     "event": "Sweep finished"
+    },
+    {
+     "frame": 819,
+     "event": "Full stop blinks once like a cursor (bookend tick, beat)"
+    },
+    {
+     "frame": 839,
+     "event": "Final frame: held title card, letterbox on, push at 1.03"
+    }
+   ],
+   "onScreenText": [
+    "`First Light`: Instrument Serif 200px, 'First' Regular + 'Light' Italic, Bone #EFEAE0, tracking -0.005em, centred with its 24px vermilion full stop on x=960, baseline y=552 (about x 590-1330)",
+    "`WRITTEN IN CODE BY AI`: JetBrains Mono 300, 19px, uppercase, letter-spacing 0.28em, Ash #8A8A93, centred x=960, baseline y=676"
+   ],
+   "technique": "- DOM spans per glyph (local frame = global - 705) inside a mask div (position absolute, top 0, height 622px, overflow hidden).\n- Glyph x-positions come from the shared TITLE_LAYOUT. It measures each glyph cumulatively with measureText, so the per-glyph spans keep the run's spacing. The layout is calculated only after loadFont resolves (delayRender/continueRender), so the full-stop div at P sits exactly where s6 left the sun.\n- The full stop is a div with border-radius 50%.\n- The hairline is a 1px div with transform-origin center.\n- The specular sweep uses per-glyph background-clip:text with the gradient position offset by each glyph's left, so it reads as one continuous band.\n- spring() from remotion.\n- The letterbox, grain and light leak 2 (705-765, 0.16) come from the global finishing layer.",
+   "handoffIn": "Frame 705 equals the s6 exit: black with the letterbox open (it starts closing on this frame). A 1px Bone hairline at y = 622 spans about x 566-1354, and the vermilion 24px full stop sits at P (about 1318,540) with a small glow.",
+   "handoffOut": "Frame 839, the end of the film: the held title card. 'First Light' with its vermilion full stop, the credit line beneath, no hairline, letterbox at 138px, global grain 0.05, push-in at 1.03. The sound tail decays to silence."
+  }
+ ],
+ "soundCues": [
+  {
+   "frame": 0,
+   "type": "drone",
+   "description": "Sub drone fades in from silence over 0-40: a 38 Hz sine plus a faint 76 Hz, over a quiet room-tone hiss. It runs until the hard dropout at 580. The global tempo grid is 120 BPM (15 frames per beat) from frame 0. Audio is 48 kHz, so cue frame f starts at sample f*1600.",
+   "intensity": 1
+  },
+  {
+   "frame": 15,
+   "type": "sub-hit",
+   "description": "Heartbeat 1: the monolith cursor appears. A 55 Hz sine thump (6 ms attack, 220 ms decay) plus a dry 3 kHz tick (2 ms high-passed noise burst). The same tick sample is reused at 819.",
+   "intensity": 2
+  },
+  {
+   "frame": 30,
+   "type": "sub-hit",
+   "description": "Heartbeat 2 (the cursor blinks on): the same thump and tick, 3 dB quieter.",
+   "intensity": 1
+  },
+  {
+   "frame": 45,
+   "type": "click",
+   "description": "Ten keystroke clicks at 45, 48, 51, ... 72. Each is a 3 ms noise transient plus a 2.4 kHz resonant ping, with seeded \u00b15% pitch and \u00b11.5 dB per click, panned with the cursor from -0.15 to +0.2. The first click is doubled with heartbeat 3.",
+   "intensity": 2
+  },
+  {
+   "frame": 45,
+   "type": "whoosh",
+   "description": "Soft low-passed air whoosh under the macro pull-out, 45-78, with the low-pass opening from 300 Hz to 1.8 kHz.",
+   "intensity": 2
+  },
+  {
+   "frame": 76,
+   "type": "tone",
+   "description": "The 'undefined' answer: a muted low glass tone, 196 Hz plus 392 Hz sines, 300 ms decay, low-passed at 1.5 kHz. Slightly sad.",
+   "intensity": 2
+  },
+  {
+   "frame": 96,
+   "type": "reverse swell",
+   "description": "Reversed noise and reverb swell over 96-119, peaking exactly at 119 and cut dead at the end of 119.",
+   "intensity": 2
+  },
+  {
+   "frame": 120,
+   "type": "whoosh",
+   "description": "The line stretches edge to edge: an airy band-passed noise whoosh opening from the centre to full stereo width over 120-140, plus a soft 55 Hz thump (150 ms).",
+   "intensity": 3
+  },
+  {
+   "frame": 120,
+   "type": "pulse",
+   "description": "The tempo bed begins: a soft hi-tick on every beat (120, 135, 150, ... 360), rising from -18 dB to -12 dB by 360, and stopping at 374.",
+   "intensity": 1
+  },
+  {
+   "frame": 140,
+   "type": "click",
+   "description": "Grid rules peel off: three glassy ticks at 140, 143 and 146, pitched 2.4, 2.7 and 3.0 kHz.",
+   "intensity": 1
+  },
+  {
+   "frame": 150,
+   "type": "shimmer",
+   "description": "Columns draw on: a granular shimmer sweep over 150-176 (filtered noise, band-pass rising from 2 to 6 kHz, spreading centre-out in stereo).",
+   "intensity": 2
+  },
+  {
+   "frame": 166,
+   "type": "click",
+   "description": "The origin label `(0, 0)`: a tiny soft 1.6 kHz sine blip, 40 ms.",
+   "intensity": 1
+  },
+  {
+   "frame": 188,
+   "type": "riser",
+   "description": "Tonal riser under the tilt, 188-224: a detuned saw stack through a rising low-pass, pitch up 5 semitones, settling as the floor lands.",
+   "intensity": 3
+  },
+  {
+   "frame": 225,
+   "type": "sub-bass hit",
+   "description": "Downbeat into flight: a sub hit (pitch drop 50 to 38 Hz, 400 ms) plus a wide whoosh. A kick lands on every other beat: 225, 255, 285, 315, 345.",
+   "intensity": 4
+  },
+  {
+   "frame": 294,
+   "type": "whoosh",
+   "description": "Bracket pass 1 '{ }': a short doppler whoosh, opener panned left and closer panned right.",
+   "intensity": 2
+  },
+  {
+   "frame": 300,
+   "type": "riser",
+   "description": "Long noise riser over 300-374, pitch +12 semitones. The tick pulse accelerates from every 15 frames to every 8, then every 4.",
+   "intensity": 3
+  },
+  {
+   "frame": 324,
+   "type": "whoosh",
+   "description": "Bracket pass 2 '( )': doppler whoosh, 2 semitones above pass 1.",
+   "intensity": 3
+  },
+  {
+   "frame": 342,
+   "type": "whoosh",
+   "description": "Bracket pass 3 '[ ]': doppler whoosh, +4 semitones.",
+   "intensity": 3
+  },
+  {
+   "frame": 356,
+   "type": "whoosh",
+   "description": "Bracket pass 4 '( )': doppler whoosh, +6 semitones, wider stereo.",
+   "intensity": 4
+  },
+  {
+   "frame": 366,
+   "type": "whoosh",
+   "description": "Bracket pass 5 '{ }': doppler whoosh, +8 semitones, plus a bright high sine sweep (4 to 9 kHz) for the anamorphic flare, 366-375.",
+   "intensity": 4
+  },
+  {
+   "frame": 375,
+   "type": "impact",
+   "description": "Cut into matter: a deep whoomp (45 Hz sine plus a low-passed noise burst). The riser and tick pulse cut dead at the end of 374. A tape-stop pitch-down whoosh over 375-405 follows the deceleration.",
+   "intensity": 4
+  },
+  {
+   "frame": 400,
+   "type": "texture",
+   "description": "Assembly: granular particle crackle (sparse seeded micro-clicks) scattered across the stereo field, density rising from 400 to 470.",
+   "intensity": 2
+  },
+  {
+   "frame": 455,
+   "type": "pad",
+   "description": "A minor pad (A1, E2, C3, slow attack) fades in over 455-524, with its low-pass opening from 400 Hz to 3 kHz as the core warms.",
+   "intensity": 3
+  },
+  {
+   "frame": 465,
+   "type": "kick",
+   "description": "Beat-locked sphere pulses: kicks at 465, 480, 495 and 510, velocity rising, each with a short sub tail.",
+   "intensity": 3
+  },
+  {
+   "frame": 525,
+   "type": "reverse swell",
+   "description": "Collapse: a reversed cymbal-like suck-in swell over 525-551 as the spin accelerates. The pad bends down 1 semitone.",
+   "intensity": 4
+  },
+  {
+   "frame": 551,
+   "type": "impact",
+   "description": "The point settles: a soft felt thump (70 Hz, 120 ms) plus a tiny high glint (6 kHz ping).",
+   "intensity": 2
+  },
+  {
+   "frame": 556,
+   "type": "click",
+   "description": "Eight keystroke clicks every 2 frames (556, 558, ... 570) for `light = `, tighter and closer-miked than in s1.",
+   "intensity": 2
+  },
+  {
+   "frame": 580,
+   "type": "silence",
+   "description": "HARD DROPOUT: every element, including the drone and pad, cuts to digital silence with no tail. The held breath.",
+   "intensity": 1
+  },
+  {
+   "frame": 588,
+   "type": "reverse swell",
+   "description": "A barely audible reversed-air inhale over 588-599, ending abruptly one sample before 600.",
+   "intensity": 1
+  },
+  {
+   "frame": 600,
+   "type": "sub-bass hit",
+   "description": "IGNITION, the loudest moment of the film: a sub drop (80 to 32 Hz over 600 ms), a transient crack, a wide white-noise burst and a low saw-stack brass blast, with a long reverb tail. Brickwall-limited.",
+   "intensity": 5
+  },
+  {
+   "frame": 600,
+   "type": "whoosh",
+   "description": "Shockwave: an outward whoosh with stereo widening over 600-628, plus a low rumble tail to 632.",
+   "intensity": 4
+  },
+  {
+   "frame": 606,
+   "type": "pad",
+   "description": "The 'light' chord: a warm major pad (D2, A2, F#3, E4, add9) swells over 606-690 and sustains under the title, with slow chorus. The minor of s4 resolves to major: the emotional release.",
+   "intensity": 4
+  },
+  {
+   "frame": 628,
+   "type": "shimmer",
+   "description": "Rays extend: 18 tiny glassy ticks following the ray reveal over 628-650, forming a soft ascending D-major pentatonic arpeggio.",
+   "intensity": 2
+  },
+  {
+   "frame": 666,
+   "type": "reverse swell",
+   "description": "The sun shrinks to the full stop: a reverse swell over 666-704 peaking at 704, with the pad filter closing slightly.",
+   "intensity": 3
+  },
+  {
+   "frame": 705,
+   "type": "impact",
+   "description": "The full stop lands: a deep soft tonk (110 Hz plus 220 Hz sines, 600 ms decay) with a gentle sub.",
+   "intensity": 3
+  },
+  {
+   "frame": 707,
+   "type": "whoosh",
+   "description": "Title glyphs rise: a soft airy upward whoosh over 707-747.",
+   "intensity": 2
+  },
+  {
+   "frame": 750,
+   "type": "tone",
+   "description": "Full-stop pulse: a pure bell (880 Hz plus 1760 Hz sines) with a long reverb tail.",
+   "intensity": 2
+  },
+  {
+   "frame": 752,
+   "type": "click",
+   "description": "Credit reveal: four very faint grouped high ticks across 752-764.",
+   "intensity": 1
+  },
+  {
+   "frame": 776,
+   "type": "shimmer",
+   "description": "Specular sweep: a very soft airy shimmer panned left to right over 776-806, following the light band.",
+   "intensity": 1
+  },
+  {
+   "frame": 780,
+   "type": "pad",
+   "description": "The pad resolves to a single sustained D3 over a soft D1 sub for the hold.",
+   "intensity": 2
+  },
+  {
+   "frame": 800,
+   "type": "fade",
+   "description": "All tails decay smoothly toward silence by 839. No hard stop.",
+   "intensity": 1
+  },
+  {
+   "frame": 819,
+   "type": "click",
+   "description": "Bookend: the frame-15 cursor tick, as the full stop blinks once.",
+   "intensity": 1
+  }
+ ],
+ "risks": [
+  "RENDER COST AND DETERMINISM ON 4-CORE SOFTWARE RENDERING. The heavy parts are the s3 per-glyph canvas blur plus the 5-sample manual motion blur, the 4096 particles in s4/s5, the light-leak WebGL windows, and the full-frame chromatic-aberration filter.\n\nMitigation:\n(a) No WebGL scene at all: every 3D shot is Canvas 2D with manual projection. Every frame is a pure function of the global frame (seeded rng from motion.ts, @remotion/noise), so concurrency 4 is safe and sub-frames are exact.\n(b) Batch dots into 8 alpha buckets with 'lighter' compositing, so nothing is depth-sorted. Glyph sprites are rasterised once after font load. ctx.filter blur is used only on the 10 bracket draws.\n(c) Motion blur is manual accumulation for 23 frames (s3), plus Trail on 8 small glyphs for 15 frames (s6). The CA filter is mounted on 19 frames only. Light leaks run in two windows only. The existing tile-based Grain is used, not feTurbulence.\n(d) Budget: an average of 600 ms per frame or less. Render the QA stills (60, 176, 300, 360, 470, 545, 640, 700, 800) with `npx remotion still` first and time them.\n(e) Fallbacks, applied in this order:\n  1. s3 motion blur from 5 samples to 3.\n  2. The s4 glyph subset from 8% to 4%.\n  3. The particle count from 4096 to 3072 (Fibonacci sphere maths unchanged).\n  4. Light-leak WebGL replaced by two noise-driven ember radial gradients with blur(80px).",
+  "SEAM CONTINUITY ACROSS SEVEN INDEPENDENTLY BUILT SCENES. The risks are:\n- projection maths and camera velocity at 224/225 and 374/375;\n- sphere state at 524/525;\n- the dot at (1114,540);\n- the full-stop position and hairline extents, which depend on Instrument Serif metrics.\n\nMitigation:\n(a) A single film.ts owned by the director, imported by every engineer: PALETTE, easings, FOCAL, project(), drawFloor(), camZ_s2/camZ_s3, camS1/worldToScreen, S5_DOT and TITLE_LAYOUT(). Also sphere.ts, with a pure sphereState(globalFrame) shared by s4 and s5.\n(b) TITLE_LAYOUT is computed with measureText only after loadFont resolves (delayRender/continueRender), never hard-coded. Approximate values from the actual font files: 'First ' = 337px, 'Light' = 370px, W about 739, P about (1318,540).\n(c) Each engineer renders their first and last local frames as stills, and the director diffs the pairs 119/120, 224/225, 374/375, 524/525, 599/600 and 704/705 at 50% onion-skin. Tolerance: 1px in position and zero colour drift on any vermilion element.\n(d) Technology and geometry changes happen only under cover: on a hard hit (375 flare plus CA plus impact, 600 ignition) or on a near-black frame (119, 704).",
+  "PROCEDURAL ARTEFACTS THAT READ AS 'BROKEN'. The risks are:\n- wagon-wheel strobing of transverse floor lines at up to 142 px/f against their 120-unit spacing;\n- moir\u00e9 and shimmer of thin lines near the horizon;\n- segments exploding when a vertex passes behind the camera;\n- brackets popping at the lens;\n- additive particles blowing out to white when the sphere collapses;\n- soft text from CSS-scaled bitmaps;\n- fallback fonts.\n\nMitigation:\n(a) Transverse lines fade out over 296-322, before speed passes about 40 px/f. Velocity-length speed dashes replace them; these are inherently motion-blurred and cannot strobe.\n(b) Fog per 600-unit segment (smoothstep 2200 to 7500) kills distant lines before they alias. Lines are at least 1.25px, positions rounded to 0.5px, lineCap 'butt'.\n(c) Near-plane clipping (depth >= 60) runs before projection. No CSS 3D anywhere.\n(d) Brackets fade with smoothstep(160, 400, depth) and are culled below 160; the s3 manual blur covers the fastest passes.\n(e) In s5, particle alpha is multiplied by smoothstep(0, 0.3, rf) during the collapse, so the vermilion core glow carries the colour instead of a white blob.\n(f) The s1 zoom is SVG text under a viewBox camera, so glyphs re-rasterise at 6x. will-change is overridden to auto on every scaling text layer. The shockwave and rays are soft gradients rather than sub-2px strokes, and the per-frame-seeded heat haze was cut.\n(g) Every text scene gates on document.fonts.load via delayRender. Typing and blinks are the only linear motion, and they are deliberate."
+ ]
+}
